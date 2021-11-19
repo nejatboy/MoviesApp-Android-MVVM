@@ -11,6 +11,7 @@ import androidx.viewbinding.ViewBinding
 import com.newgamesoftware.moviesdemo_android_mvvm.repository.BaseRepository
 import com.newgamesoftware.moviesdemo_android_mvvm.service.RemoteDataSource
 
+
 abstract class BaseFragment<VM: ViewModel, VB: ViewBinding, R: BaseRepository>: Fragment() {
 
     protected lateinit var binding: VB

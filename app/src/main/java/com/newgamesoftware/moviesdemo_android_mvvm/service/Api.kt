@@ -1,23 +1,24 @@
 package com.newgamesoftware.moviesdemo_android_mvvm.service
 
-import com.newgamesoftware.moviesdemo_android_mvvm.model.Movie
-import retrofit2.http.POST
-import retrofit2.http.Path
+
+import com.newgamesoftware.moviesdemo_android_mvvm.model.MoviesResponseModel
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface Api {
 
-    @POST("3/movie/now_playing?api_key={apiKey}&language={language}&page={page}")
+    @GET("3/movie/now_playing")
     suspend fun fetchNowPlayingList(
-        @Path("apiKey") apiKey: String,
-        @Path("language") language: String,
-        @Path("page") page: Int
-    ) : ArrayList<Movie>
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ) : MoviesResponseModel
 
 
-    @POST("3/movie/upcoming?api_key={apiKey}&language={language}&page={page}")
-    suspend fun fetchIncomingList(
-        @Path("apiKey") apiKey: String,
-        @Path("language") language: String,
-        @Path("page") page: Int
-    ) : ArrayList<Movie>
+    @GET("3/movie/upcoming")
+    suspend fun fetchUpComingList(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ) : MoviesResponseModel
 }

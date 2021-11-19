@@ -3,7 +3,6 @@ package com.newgamesoftware.moviesdemo_android_mvvm.repository
 import com.newgamesoftware.moviesdemo_android_mvvm.service.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
 
 abstract class BaseRepository {
 
@@ -16,20 +15,8 @@ abstract class BaseRepository {
                 Resource.Success(apiCall.invoke())
             }
 
-            catch (throwable: Throwable) {
-                when(throwable) {
-                    is HttpException -> {
-                        Resource.Failure(
-                            isNetworkError = false,
-                            errorCode = throwable.code(),
-                            errorBody = throwable.response()?.errorBody()
-                        )
-                    }
-
-                    else -> {
-                        Resource.Failure(isNetworkError = true, errorCode = null, errorBody = null)
-                    }
-                }
+            catch (e: Exception) {
+                Resource.Failure(e)
             }
         }
 
