@@ -34,9 +34,16 @@ class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, Movie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.recyclerViewHome.adapter().request = ::request
+
         viewModel.list.observe(viewLifecycleOwner, ::observeMovies)
 
-        viewModel.requestFetchIncomingList(page = 1, language = Language.EN)
+        request(page = 1)
+    }
+
+
+    private fun request(page: Int) {
+        viewModel.requestFetchIncomingList(page = page, language = Language.EN)
     }
 
 

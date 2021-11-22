@@ -11,6 +11,8 @@ abstract class BaseRecyclerViewAdapter<VB: ViewDataBinding>(private val layoutID
 
     inner class Holder(cell: VB) : BaseRecyclerViewHolder<VB>(cell)
 
+    var request: ((page: Int) -> Unit)? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val inflater = LayoutInflater.from(parent.context)
