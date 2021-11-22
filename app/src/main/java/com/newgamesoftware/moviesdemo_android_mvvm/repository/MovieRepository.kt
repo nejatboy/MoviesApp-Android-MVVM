@@ -1,10 +1,11 @@
 package com.newgamesoftware.moviesdemo_android_mvvm.repository
 
-import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseActivity
+
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Language
 import com.newgamesoftware.moviesdemo_android_mvvm.model.MoviesResponseModel
 import com.newgamesoftware.moviesdemo_android_mvvm.service.Api
 import com.newgamesoftware.moviesdemo_android_mvvm.service.Resource
+
 
 class MovieRepository(private val api: Api): BaseRepository() {
 

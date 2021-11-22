@@ -5,15 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseFragment
+import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseParentFragment
 import com.newgamesoftware.moviesdemo_android_mvvm.databinding.FragmentHomeBinding
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Language
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Movie
 import com.newgamesoftware.moviesdemo_android_mvvm.repository.MovieRepository
 import com.newgamesoftware.moviesdemo_android_mvvm.service.Api
 
-class HomeFragment: BaseFragment<HomeViewModel, FragmentHomeBinding, MovieRepository>() {
+class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, MovieRepository>() {
 
 
     override fun getViewModel(): Class<HomeViewModel> {
@@ -37,13 +36,11 @@ class HomeFragment: BaseFragment<HomeViewModel, FragmentHomeBinding, MovieReposi
 
         viewModel.list.observe(viewLifecycleOwner, ::observeMovies)
 
-        binding.buttonTest.setOnClickListener {
-            viewModel.requestFetchIncomingList(page = 1, language = Language.EN)
-        }
+        viewModel.requestFetchIncomingList(page = 1, language = Language.EN)
     }
 
 
     private fun observeMovies(movies: ArrayList<Movie>) {
-        Toast.makeText(requireContext(), "GELDİ", Toast.LENGTH_SHORT).show()
+        binding.recyclerViewHome.adapter().addMovies(newList = movies)
     }
 }

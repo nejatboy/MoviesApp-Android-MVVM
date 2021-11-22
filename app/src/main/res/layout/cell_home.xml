@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.newgamesoftware.moviesdemo_android_mvvm.model.Movie" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.newgamesoftware.moviesdemo_android_mvvm.subviews.RadiusImageView
+            android:id="@+id/shapeableImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:loadUrl="@{movie.getImageUrl(true)}"
+            app:layout_constraintWidth_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{movie.getTitle}"
+            app:layout_constraintStart_toEndOf="@id/shapeableImageView"
+            app:layout_constraintTop_toTopOf="@id/shapeableImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:maxLines="2"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/shapeableImageView"
+            android:text="@{movie.releaseDate}"
+            app:layout_constraintEnd_toEndOf="@id/textViewTitle"
+            android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/textViewTitle"
+            app:layout_constraintEnd_toEndOf="@id/textViewTitle"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+            app:layout_constraintBottom_toTopOf="@id/textViewDate"
+            android:maxLines="2"
+            android:text="@{movie.overview}"
+            android:ellipsize="end"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
