@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: MovieRepository): ViewModel() {
 
-    val list = MutableLiveData<ArrayList<Movie>>()
+    val movies = MutableLiveData<ArrayList<Movie>>()
 
 
     fun requestFetchIncomingList(page: Int, language: Language) {
@@ -24,7 +24,7 @@ class HomeViewModel(private val repository: MovieRepository): ViewModel() {
                 return@launch
             }
 
-            list.postValue(moviesResponseModel.movies)
+            movies.postValue(moviesResponseModel.movies)
         }
     }
 

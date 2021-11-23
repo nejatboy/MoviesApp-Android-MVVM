@@ -12,6 +12,7 @@ import com.newgamesoftware.moviesdemo_android_mvvm.model.Movie
 import com.newgamesoftware.moviesdemo_android_mvvm.repository.MovieRepository
 import com.newgamesoftware.moviesdemo_android_mvvm.service.Api
 
+
 class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, MovieRepository>() {
 
 
@@ -36,7 +37,7 @@ class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, Movie
 
         binding.recyclerViewHome.adapter().request = ::request
 
-        viewModel.list.observe(viewLifecycleOwner, ::observeMovies)
+        viewModel.movies.observe(viewLifecycleOwner, ::observeMovies)
 
         request(page = 1)
     }

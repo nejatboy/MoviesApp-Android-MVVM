@@ -3,7 +3,7 @@ package com.newgamesoftware.moviesdemo_android_mvvm.ui.home
 
 
 import com.newgamesoftware.moviesdemo_android_mvvm.R
-import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseRecyclerViewAdapter
+import com.newgamesoftware.moviesdemo_android_mvvm.base.recyclerView.BaseRecyclerViewAdapter
 import com.newgamesoftware.moviesdemo_android_mvvm.databinding.CellHomeBinding
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Movie
 

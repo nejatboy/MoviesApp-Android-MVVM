@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFEB3B">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.newgamesoftware.moviesdemo_android_mvvm.ui.home.top.TopRecyclerView
+        android:id="@+id/recyclerViewTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</layout>

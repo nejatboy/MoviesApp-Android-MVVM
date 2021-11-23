@@ -7,13 +7,14 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content"
+        android:background="@color/black">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/containerHome"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:defaultNavHost="true"
             app:layout_scrollFlags="scroll|enterAlways"
             app:navGraph="@navigation/home_navigation_graph" />

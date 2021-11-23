@@ -14,4 +14,11 @@ class MovieRepository(private val api: Api): BaseRepository() {
             api.fetchUpComingList(apiKey = apiKey, language = language.value, page = page)
         }
     }
+
+
+    suspend fun requestFetchNowPlayingList(page: Int, language: Language) : Resource<MoviesResponseModel> {
+        return safeApiCall {
+            api.fetchNowPlayingList(apiKey = apiKey, language = language.value, page = page)
+        }
+    }
 }

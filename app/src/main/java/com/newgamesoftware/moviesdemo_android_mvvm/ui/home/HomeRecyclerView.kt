@@ -5,7 +5,7 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseRecyclerView
+import com.newgamesoftware.moviesdemo_android_mvvm.base.recyclerView.BaseRecyclerView
 import com.newgamesoftware.moviesdemo_android_mvvm.databinding.CellHomeBinding
 import com.newgamesoftware.moviesdemo_android_mvvm.util.widthRatio
 
