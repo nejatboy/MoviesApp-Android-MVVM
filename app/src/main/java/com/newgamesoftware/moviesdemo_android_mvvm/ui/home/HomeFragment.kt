@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseParentFragment
 import com.newgamesoftware.moviesdemo_android_mvvm.databinding.FragmentHomeBinding
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Language
@@ -35,7 +36,10 @@ class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, Movie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recyclerViewHome.adapter().request = ::request
+        binding.recyclerViewHome.adapter().apply {
+            request = ::request
+            onItemMovieClicked = ::onItemMovieClicked
+        }
 
         viewModel.movies.observe(viewLifecycleOwner, ::observeMovies)
 
@@ -50,5 +54,12 @@ class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, Movie
 
     private fun observeMovies(movies: ArrayList<Movie>) {
         binding.recyclerViewHome.adapter().addMovies(newList = movies)
+    }
+
+
+    private fun onItemMovieClicked(movie: Movie) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(movie)
+        //val action = ActionOnlyNavDirections(R.id.action_homeFragment_to_detailFragment)
+        Navigation.findNavController(requireView()).navigate(action)
     }
 }

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.newgamesoftware.moviesdemo_android_mvvm.model.Movie
 
 
 abstract class BaseRecyclerViewAdapter<VDB: ViewDataBinding>(private val layoutID: Int): RecyclerView.Adapter<BaseRecyclerViewAdapter<VDB>.Holder>() {
@@ -12,6 +13,7 @@ abstract class BaseRecyclerViewAdapter<VDB: ViewDataBinding>(private val layoutI
     inner class Holder(cell: VDB) : BaseRecyclerViewHolder<VDB>(cell)
 
     var request: ((page: Int) -> Unit)? = null
+    var onItemMovieClicked: ((Movie) -> Unit)? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

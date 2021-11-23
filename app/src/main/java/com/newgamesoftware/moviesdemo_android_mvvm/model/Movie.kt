@@ -1,6 +1,7 @@
 package com.newgamesoftware.moviesdemo_android_mvvm.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 data class Movie (
@@ -40,7 +41,7 @@ data class Movie (
 
     @SerializedName("vote_count")
     val voteCount: Long
-) {
+) : Serializable {
 
     val getTitle: String get() {
         val year = releaseDate.split("-").first()

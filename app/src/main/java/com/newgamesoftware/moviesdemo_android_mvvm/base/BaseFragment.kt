@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
+import com.newgamesoftware.moviesdemo_android_mvvm.ui.detail.DetailFragmentArgs
 
 abstract class BaseFragment<VB: ViewBinding>: Fragment() {
 

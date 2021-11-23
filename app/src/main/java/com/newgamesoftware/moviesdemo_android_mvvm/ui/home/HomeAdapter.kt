@@ -14,7 +14,12 @@ class HomeAdapter: BaseRecyclerViewAdapter<CellHomeBinding>(R.layout.cell_home) 
 
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.binding().movie = movies[position]
+        val movie = movies[position]
+        holder.binding().movie = movie
+
+        holder.itemView.setOnClickListener {
+            onItemMovieClicked?.invoke(movie)
+        }
 
         if (position == itemCount - 1) {    //last element
             val page = itemCount / 20 + 1
