@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val repository: MovieRepository): ViewModel() {
 
     val movies = MutableLiveData<ArrayList<Movie>>()
+    val error = MutableLiveData<String>()
 
 
     fun requestFetchIncomingList(page: Int, language: Language) {
@@ -20,7 +21,8 @@ class HomeViewModel(private val repository: MovieRepository): ViewModel() {
             val result = repository.requestFetchUpComingList(page, language)
 
             val moviesResponseModel = (result as? Resource.Success)?.value ?: run {
-                val error = result as Resource.Failure
+                val failure = result as Resource.Failure
+                error.postValue(failure.exception.localizedMessage)
                 return@launch
             }
 

@@ -9,7 +9,8 @@ import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
 import com.newgamesoftware.moviesdemo_android_mvvm.ui.detail.DetailFragmentArgs
 
-abstract class BaseFragment<VB: ViewBinding>: Fragment() {
+@Suppress("UNCHECKED_CAST")
+abstract class BaseFragment<VB: ViewBinding, A: BaseActivity>: Fragment() {
 
     protected lateinit var binding: VB
 
@@ -21,4 +22,22 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
 
 
     abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?) : VB
+
+
+    protected fun activity() : A {
+        return activity as A
+    }
+
+
+    protected fun showProgress() {
+        activity().showProgress()
+    }
+
+
+    protected fun hideProgress() {
+        activity().hideProgress()
+    }
+
+
+    protected fun showMessage(message: String) = activity().showMessage(message)
 }

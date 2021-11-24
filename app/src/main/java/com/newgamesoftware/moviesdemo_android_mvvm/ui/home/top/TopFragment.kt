@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseChildFragment
+import androidx.navigation.Navigation
 import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseParentFragment
 import com.newgamesoftware.moviesdemo_android_mvvm.databinding.FragmentTopBinding
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Language
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Movie
 import com.newgamesoftware.moviesdemo_android_mvvm.repository.MovieRepository
 import com.newgamesoftware.moviesdemo_android_mvvm.service.Api
+import com.newgamesoftware.moviesdemo_android_mvvm.ui.MainActivity
+import com.newgamesoftware.moviesdemo_android_mvvm.ui.home.HomeFragmentDirections
 
-class TopFragment: BaseParentFragment<TopViewModel, FragmentTopBinding, MovieRepository>() {
+
+class TopFragment: BaseParentFragment<TopViewModel, FragmentTopBinding, MovieRepository, MainActivity>() {
 
 
     override fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentTopBinding {
@@ -33,6 +36,7 @@ class TopFragment: BaseParentFragment<TopViewModel, FragmentTopBinding, MovieRep
         super.onViewCreated(view, savedInstanceState)
 
         binding.recyclerViewTop.adapter().request = ::request
+        binding.recyclerViewTop.adapter().onItemMovieClicked = ::onItemMovieClicked
 
         viewModel.movies.observe(viewLifecycleOwner, ::observeMovies)
 
@@ -47,5 +51,11 @@ class TopFragment: BaseParentFragment<TopViewModel, FragmentTopBinding, MovieRep
 
     private fun observeMovies(movies: ArrayList<Movie>) {
         binding.recyclerViewTop.adapter().addMovies(newList = movies)
+    }
+
+
+    private fun onItemMovieClicked(movie: Movie) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(movie)
+
     }
 }

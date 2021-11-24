@@ -15,4 +15,11 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_navigation_graph" />
 
+    <include
+        android:visibility="invisible"
+        android:id="@+id/progressView"
+        layout="@layout/layout_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </FrameLayout>

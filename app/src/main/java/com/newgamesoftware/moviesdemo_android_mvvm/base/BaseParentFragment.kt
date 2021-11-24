@@ -12,27 +12,21 @@ import com.newgamesoftware.moviesdemo_android_mvvm.repository.BaseRepository
 import com.newgamesoftware.moviesdemo_android_mvvm.service.RemoteDataSource
 
 
-abstract class BaseParentFragment<VM: ViewModel, VB: ViewBinding, R: BaseRepository>: Fragment() {
+abstract class BaseParentFragment<VM: ViewModel, VB: ViewBinding, R: BaseRepository, A: BaseActivity>: BaseFragment<VB, A>() {
 
-    protected lateinit var binding: VB
     protected val remoteDataSource = RemoteDataSource()
     protected lateinit var viewModel: VM
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = getFragmentBinding(inflater, container)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val factory = ViewModelFactory(getFragmentRepository())
         viewModel = ViewModelProvider(this, factory).get(getViewModel())
-
-        return binding.root
     }
 
 
     abstract fun getViewModel() : Class<VM>
-
-
-    abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?) : VB
 
 
     abstract fun getFragmentRepository() : R

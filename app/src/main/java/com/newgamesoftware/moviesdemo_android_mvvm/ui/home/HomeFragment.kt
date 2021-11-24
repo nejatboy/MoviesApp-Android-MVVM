@@ -12,9 +12,10 @@ import com.newgamesoftware.moviesdemo_android_mvvm.model.Language
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Movie
 import com.newgamesoftware.moviesdemo_android_mvvm.repository.MovieRepository
 import com.newgamesoftware.moviesdemo_android_mvvm.service.Api
+import com.newgamesoftware.moviesdemo_android_mvvm.ui.MainActivity
 
 
-class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, MovieRepository>() {
+class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, MovieRepository, MainActivity>() {
 
 
     override fun getViewModel(): Class<HomeViewModel> {
@@ -42,24 +43,31 @@ class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, Movie
         }
 
         viewModel.movies.observe(viewLifecycleOwner, ::observeMovies)
+        viewModel.error.observe(viewLifecycleOwner, ::observeError)
 
         request(page = 1)
     }
 
 
     private fun request(page: Int) {
+        showProgress()
         viewModel.requestFetchIncomingList(page = page, language = Language.EN)
     }
 
 
     private fun observeMovies(movies: ArrayList<Movie>) {
+        hideProgress()
         binding.recyclerViewHome.adapter().addMovies(newList = movies)
     }
 
 
     private fun onItemMovieClicked(movie: Movie) {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(movie)
-        //val action = ActionOnlyNavDirections(R.id.action_homeFragment_to_detailFragment)
         Navigation.findNavController(requireView()).navigate(action)
+    }
+
+
+    private fun observeError(error: String) {
+        showMessage(message = error)
     }
 }

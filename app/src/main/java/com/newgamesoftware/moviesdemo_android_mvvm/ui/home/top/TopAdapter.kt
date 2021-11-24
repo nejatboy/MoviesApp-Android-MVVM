@@ -15,6 +15,10 @@ class TopAdapter: BaseRecyclerViewAdapter<CellTopBinding>(R.layout.cell_top) {
         val movie = movies[position]
         holder.binding().imageView.loadUrl(movie.getImageUrl(isPosterPath = false))
 
+        holder.itemView.setOnClickListener {
+            onItemMovieClicked?.invoke(movie)
+        }
+
         if (position == itemCount - 1) {    //last element
             val page = itemCount / 20 + 1
             request?.invoke(page)
