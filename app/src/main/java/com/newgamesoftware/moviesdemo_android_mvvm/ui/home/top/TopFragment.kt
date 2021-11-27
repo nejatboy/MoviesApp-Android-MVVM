@@ -12,6 +12,7 @@ import com.newgamesoftware.moviesdemo_android_mvvm.model.Movie
 import com.newgamesoftware.moviesdemo_android_mvvm.repository.MovieRepository
 import com.newgamesoftware.moviesdemo_android_mvvm.service.Api
 import com.newgamesoftware.moviesdemo_android_mvvm.ui.MainActivity
+import com.newgamesoftware.moviesdemo_android_mvvm.ui.home.HomeFragment
 import com.newgamesoftware.moviesdemo_android_mvvm.ui.home.HomeFragmentDirections
 
 
@@ -55,7 +56,6 @@ class TopFragment: BaseParentFragment<TopViewModel, FragmentTopBinding, MovieRep
 
 
     private fun onItemMovieClicked(movie: Movie) {
-        val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(movie)
-
+        (parentFragment?.parentFragment as? HomeFragment)?.onItemMovieClicked(movie)
     }
 }

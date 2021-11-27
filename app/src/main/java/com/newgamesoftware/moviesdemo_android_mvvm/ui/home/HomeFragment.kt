@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseParentFragment
 import com.newgamesoftware.moviesdemo_android_mvvm.databinding.FragmentHomeBinding
 import com.newgamesoftware.moviesdemo_android_mvvm.model.Language
@@ -61,9 +62,10 @@ class HomeFragment: BaseParentFragment<HomeViewModel, FragmentHomeBinding, Movie
     }
 
 
-    private fun onItemMovieClicked(movie: Movie) {
+    fun onItemMovieClicked(movie: Movie) {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(movie)
-        Navigation.findNavController(requireView()).navigate(action)
+        (parentFragment as NavHostFragment).navController.navigate(action)
+        //Navigation.findNavController(requireView()).navigate(action)
     }
 
 
