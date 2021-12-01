@@ -19,6 +19,5 @@ abstract class BaseRepository {
                 Resource.Failure(e)
             }
         }
-
     }
 }

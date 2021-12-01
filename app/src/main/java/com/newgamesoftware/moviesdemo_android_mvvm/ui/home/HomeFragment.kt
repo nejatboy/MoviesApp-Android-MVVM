@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseParentFragment
 import com.newgamesoftware.moviesdemo_android_mvvm.databinding.FragmentHomeBinding

@@ -2,12 +2,8 @@ package com.newgamesoftware.moviesdemo_android_mvvm.ui
 
 import android.os.Bundle
 import android.view.View
-import android.widget.FrameLayout
-import android.widget.Toast
-import com.newgamesoftware.moviesdemo_android_mvvm.R
 import com.newgamesoftware.moviesdemo_android_mvvm.base.BaseActivity
 import com.newgamesoftware.moviesdemo_android_mvvm.databinding.ActivityMainBinding
-import com.newgamesoftware.moviesdemo_android_mvvm.databinding.LayoutProgressBinding
 
 class MainActivity : BaseActivity() {
 

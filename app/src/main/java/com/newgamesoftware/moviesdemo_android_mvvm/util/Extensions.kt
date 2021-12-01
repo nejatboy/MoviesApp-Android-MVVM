@@ -1,6 +1,6 @@
 package com.newgamesoftware.moviesdemo_android_mvvm.util
 
-import android.view.View
+
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
